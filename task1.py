@@ -22,5 +22,5 @@ def total_salary(path): # function to calculate total salary and avarage salary
                 index += 1
             avarage = total / index
         return total, avarage
-
-print(total_salary(PATH)) # print total salary and avarage salary
+total, avarage = total_salary(PATH)
+print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {avarage}") # print total salary and avarage salary
