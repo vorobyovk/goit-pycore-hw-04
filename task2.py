@@ -9,7 +9,7 @@ def get_cats_info(path): # function to get cats info
     if not check_file_exists(path):
         return 'File does not exist'
     else:
-        with open(path, 'r') as file:
+        with open(path, encoding = "utf-8", mode="r") as file:
             lines = file.readlines()
             cats = [] # list to store cats info
             for line in lines:

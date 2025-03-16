@@ -1,6 +1,6 @@
 import os
 
-PATH = 'sallary2.txt' # path to file
+PATH = 'sallary.txt' # path to file
 
 def is_file_exist(path):  # function to check if file exist  
     return os.path.exists(path)
@@ -10,7 +10,7 @@ def total_salary(path): # function to calculate total salary and avarage salary
         print("File is not exist")
         return 0,0
     else:
-        with open(path, 'r') as file:
+        with open(path, encoding = "utf-8", mode="r") as file:
             lines = file.readlines()
             index = 0 # index to count number of employers
             total = 0 # total salary
