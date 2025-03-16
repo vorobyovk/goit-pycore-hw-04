@@ -15,7 +15,7 @@ def get_cats_info(path): # function to get cats info
             for line in lines:
                 # Check if the line has 25 symbols and the third element is a digit
                 if line.split(',')[0].count('') == 25 and line.rstrip('\n').split(',')[2].isdigit() == True:
-                    cat = line.strip().split()
+                    cat = {"id":line.split(',')[0], "name":line.split(',')[1], "age":line.rstrip('\n').split(',')[2]}  
                     cats.append(cat)
                 else:
                     return 'Invalid data'
