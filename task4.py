@@ -1,39 +1,71 @@
-CONTACTS = {}
 
 
-def add_contact(name, phone):
+def parse_input(user_input):
+    cmd, *args = user_input.split()
+    cmd = cmd.strip().lower()
+    return cmd, *args
+
+def add_contact(args, CONTACTS): # Add contact by name
+    if len(args) > 2:
+        return "Too many arguments"
+    if len(args) == 2:
+        name, phone = args
+    else:
+        if len(args) == 1:
+            name = args[0]
+            phone = input("Please input phone: ").strip().lower()
+        else:
+            print(len(args))   
+            name = input("Please input name: ").strip().lower() 
+            phone = input("Please input phone: ").strip().lower()
+    print(f"Name: {name}, Phone: {phone}")    
     CONTACTS[name] = phone
+    return "Contact added."
     
-def change_contact(name, phone):    
+    
+def change_contact(args, CONTACTS):   # Change contact by name
+    if len(args) > 2:
+        return "Too many arguments, try again"
+    if len(args) == 2:
+        name, phone = args
+    else: 
+        if len(args) == 1:
+            name = args[0]
+            phone = input("Please input phone: ").strip().lower()
+        else:
+            print(len(args))   
+            name = input("Please input name: ").strip().lower() 
+            phone = input("Please input phone: ").strip().lower()
     if name in CONTACTS:
         CONTACTS[name] = phone
     else:
         print(f"Contact {name} not found")  
 
-def get_contact(name):  
+def get_contact(args, CONTACTS):  # Get contact by name
+    if args != []:
+        name = args[0]
+    else:
+        name = input("Please input name: ").strip().lower()    
     if name in CONTACTS:
         return f"Phone: {CONTACTS[name]}"
     else:
         return f"Contact {name} not found"  
 
-def main():
+def main(): # Main function
+   CONTACTS = {}
    print("Welcome to the assistant bot!\nYou can use command hello, add, change, phone or exit/close")
    while True:
-        user_response = input(f"Please input command:").strip().lower()
-        if user_response == "hello":
+        user_input = input(f"Please input command:").strip().lower() # Input command from user
+        command, *args = parse_input(user_input)
+        if command == "hello": 
             print("How can I help you?\n You can use command hello, add, change, phone or exit/close")
-        elif user_response == "add":
-            name = input("Please input name: ")
-            phone = input("Please input phone: ")
-            add_contact(name, phone)
-        elif user_response == "change":
-            name = input("Please input name: ")
-            phone = input("Please input phone: ")
-            change_contact(name, phone)
-        elif user_response == "phone":
-            name = input("Please input name: ")
-            print(get_contact(name))
-        elif user_response == "exit" or user_response == "close":
+        elif command == "add":
+            add_contact(args, CONTACTS)
+        elif command == "change":
+            change_contact(args, CONTACTS)
+        elif command == "phone":
+            print(get_contact(args, CONTACTS))
+        elif command == "exit" or user_input == "close":
             print(f"Goodbye!")
             break 
         else:
