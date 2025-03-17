@@ -7,7 +7,7 @@ def parse_input(user_input):
 
 def add_contact(args, CONTACTS): # Add contact by name
     if len(args) > 2:
-        return "Too many arguments"
+        return f"Too many arguments {args}"
     if len(args) == 2:
         name, phone = args
     else:
@@ -15,17 +15,16 @@ def add_contact(args, CONTACTS): # Add contact by name
             name = args[0]
             phone = input("Please input phone: ").strip().lower()
         else:
-            print(len(args))   
             name = input("Please input name: ").strip().lower() 
             phone = input("Please input phone: ").strip().lower()
-    print(f"Name: {name}, Phone: {phone}")    
+    print(f"Added Name: {name}, Phone: {phone}")    
     CONTACTS[name] = phone
     return "Contact added."
     
     
 def change_contact(args, CONTACTS):   # Change contact by name
     if len(args) > 2:
-        return "Too many arguments, try again"
+        print("Too many arguments, try again")
     if len(args) == 2:
         name, phone = args
     else: 
@@ -42,9 +41,9 @@ def change_contact(args, CONTACTS):   # Change contact by name
         print(f"Contact {name} not found")  
 
 def get_contact(args, CONTACTS):  # Get contact by name
-    if args != []:
+    if len(args) == 1:        
         name = args[0]
-    else:
+    else: 
         name = input("Please input name: ").strip().lower()    
     if name in CONTACTS:
         return f"Phone: {CONTACTS[name]}"
