@@ -3,8 +3,6 @@ import os
 import colorama
 import sys
 
-#USER_PATH = "c:/Games"
-
 def if_path_exists(path_var): # Check if path exists
     if os.path.exists(path_var) == True:
         return True
@@ -25,8 +23,10 @@ def print_file_directory(path_var): # Print tree of file and directory
 def main(USER_PATH):
     if if_path_exists(USER_PATH) == True: # Check if path exists
         print_file_directory(USER_PATH) # Print tree of file and directory
-
+    else: # If path does not exist
+        print(f"{colorama.Fore.RED}Path does not exist!")
+        
 if __name__ == "__main__":
-    USER_PATH = sys.argv[1] # Get user path
-    print(USER_PATH)
+    USER_PATH = sys.argv[1] # Get user path    
     main(USER_PATH) # Call main function
+    print(USER_PATH)
