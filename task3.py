@@ -2,7 +2,7 @@ from os import walk
 import os
 import colorama
 
-USER_PATH = "c:/Games"
+#USER_PATH = "c:/Games"
 
 def if_path_exists(path_var): # Check if path exists
     if os.path.exists(path_var) == True:
@@ -21,8 +21,10 @@ def print_file_directory(path_var): # Print tree of file and directory
         for f in filenames:
             print('{}{}'.format(subindent, f"{colorama.Fore.RED}{f}"))
 
-def main():
+def main(USER_PATH):
     if if_path_exists(USER_PATH) == True:
         print_file_directory(USER_PATH)
 
-main()
+if __name__ == "__main__":
+    USER_PATH = input("Enter path: ")
+    main(USER_PATH)
