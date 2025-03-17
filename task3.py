@@ -16,15 +16,15 @@ def print_file_directory(path_var): # Print tree of file and directory
     for (dirpath, dirnames, filenames) in structure:
         level += 1
         indent = ' ' * 2 * (level)
-        print('{}{}/'.format(indent, f"{colorama.Fore.GREEN}{os.path.basename(dirpath)}"))
+        print('{}{}/'.format(indent, f"{colorama.Fore.BLUE}{os.path.basename(dirpath)}")) # Print directory
         subindent = ' ' * 2 * (level + 1)
         for f in filenames:
-            print('{}{}'.format(subindent, f"{colorama.Fore.RED}{f}"))
+            print('{}{}'.format(subindent, f"{colorama.Fore.GREEN}{f}")) # Print file
 
 def main(USER_PATH):
-    if if_path_exists(USER_PATH) == True:
-        print_file_directory(USER_PATH)
+    if if_path_exists(USER_PATH) == True: # Check if path exists
+        print_file_directory(USER_PATH) # Print tree of file and directory
 
 if __name__ == "__main__":
-    USER_PATH = input("Enter path: ")
-    main(USER_PATH)
+    USER_PATH = input("Enter path: ") # Input path from users
+    main(USER_PATH) # Call main function
