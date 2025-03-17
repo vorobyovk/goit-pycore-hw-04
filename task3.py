@@ -1,6 +1,7 @@
 from os import walk
 import os
 import colorama
+import sys
 
 #USER_PATH = "c:/Games"
 
@@ -26,5 +27,6 @@ def main(USER_PATH):
         print_file_directory(USER_PATH) # Print tree of file and directory
 
 if __name__ == "__main__":
-    USER_PATH = input("Enter path: ") # Input path from users
+    USER_PATH = sys.argv[1] # Get user path
+    print(USER_PATH)
     main(USER_PATH) # Call main function
