@@ -51,20 +51,25 @@ def get_contact(args, CONTACTS):  # Get contact by name
     else:
         return f"Contact {name} not found"  
 
+def all(CONTACTS): # Get all contacts
+    print(CONTACTS)
+
 def main(): # Main function
    CONTACTS = {}
-   print("Welcome to the assistant bot!\nYou can use command hello, add, change, phone or exit/close")
+   print("Welcome to the assistant bot!\nYou can use command hello, add, change, phone, all or exit/close")
    while True:
         user_input = input(f"Please input command:").strip().lower() # Input command from user
         command, *args = parse_input(user_input)
         if command == "hello": 
-            print("How can I help you?\n You can use command hello, add, change, phone or exit/close")
+            print("How can I help you?\n You can use command hello, add, change, phone, all or exit/close")
         elif command == "add":
             add_contact(args, CONTACTS)
         elif command == "change":
             change_contact(args, CONTACTS)
         elif command == "phone":
             print(get_contact(args, CONTACTS))
+        elif command == "all":
+            all(CONTACTS)
         elif command == "exit" or user_input == "close":
             print(f"Goodbye!")
             break 
