@@ -24,7 +24,7 @@ def add_contact(args, CONTACTS): # Add contact by name
     
 def change_contact(args, CONTACTS):   # Change contact by name
     if len(args) > 2:
-        print("Too many arguments, try again")
+        return f"Too many arguments {args}"
     if len(args) == 2:
         name, phone = args
     else: 
